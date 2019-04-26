@@ -11,6 +11,8 @@ public class StoreFactory implements Store{
 	private RedisStore redisStore;
 	@Resource
 	private MysqlStore mysqlStore;
+	@Resource
+	private MemcachedStore memcachedStore;
 	@Value("${store.type}")
 	private String storeType;
 
@@ -22,6 +24,9 @@ public class StoreFactory implements Store{
 			break;
 		case "mysql":
 			store = mysqlStore;
+			break;
+		case "memcached":
+			store = memcachedStore;
 			break;
 		default:
 			store = redisStore;

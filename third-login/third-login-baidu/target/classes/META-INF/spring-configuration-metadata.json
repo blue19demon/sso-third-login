@@ -1,0 +1,11 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.third.conf.MemcacheConfiguration",
+      "name": "memcache",
+      "type": "com.third.conf.MemcacheConfiguration"
+    }
+  ],
+  "properties": []
+}
