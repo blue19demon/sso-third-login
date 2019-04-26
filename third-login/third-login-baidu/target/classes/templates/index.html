@@ -14,6 +14,7 @@
 <body>
 	<div class="contentDiv">
 		<h5>欢迎使用Baidu系统</h5>
+		<input type="hidden" th:value="${yunMineAddress}" id="yunMineAddress"/>
 		<div class="form-group">
 			<label for="book_name" class="col-sm-2 control-label">Baidu账号:</label>
 			<div class="col-xs-4"><small th:text="${qqUser.username}">zhangsan</small></div>
@@ -29,7 +30,7 @@
 	</div>
 	<script type="text/javascript">
 	 function yun_mine(){
-		 window.location.href="http://127。0.0.1:91/mine";
+		 window.location.href=$("#yunMineAddress").val();
 	 }
 	</script>
 </body>

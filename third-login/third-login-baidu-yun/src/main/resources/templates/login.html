@@ -14,6 +14,10 @@
 
 <body>
 	<div class="contentDiv">
+
+		<input type="hidden" th:value="${baiduLoginAddress}"
+			id="baiduLoginAddress" /> <input type="hidden"
+			th:value="${qqAuthAddress}" id="qqAuthAddress" />
 		<legend>
 			<strong>欢迎使用 百度云登录</strong>
 		</legend>
@@ -37,33 +41,36 @@
 			<div class="col-sm-offset-2 col-sm-10">
 				<input class="btn btn-primary" type="button" value="登录" />
 				&nbsp;&nbsp; <input class="btn" type="button" value="QQ登录"
-					onclick="qqLogin()" />
-					&nbsp;&nbsp; <input class="btn" type="button" value="Baidu登录"
+					onclick="qqLogin()" /> &nbsp;&nbsp; <input class="btn"
+					type="button" value="QQ重定向登录" onclick="qqRedirectLogin()" />
+				&nbsp;&nbsp; <input class="btn" type="button" value="Baidu登录"
 					onclick="baiduLogin()" />
 			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
-	   
+		function qqRedirectLogin() {
+			window.location.href = './qqRedirectLogin';
+		}
 		function qqLogin() {
-			window.open("http://127.0.0.1/login", window,
+			window.open($("#qqAuthAddress").val(), window,
 					"top=200,left=400,width=800,height=300");
 		}
-		 window.onload = function() {
-			 if(window.addEventListener){
-				 window.addEventListener('message',handleMessage,false);
-			 }else{
-				 window.attachEvent("onmessage",handleMessage);
-			 }
-			 function handleMessage(e) {
-				    var token=e.data;
-				    window.location.href="./index?token="+token;
-			  }
-		 }
-		 
-		 function baiduLogin(){
-			 window.location.href="http://127.0.0.1:90/login";
-		 }
+		window.onload = function() {
+			if (window.addEventListener) {
+				window.addEventListener('message', handleMessage, false);
+			} else {
+				window.attachEvent("onmessage", handleMessage);
+			}
+			function handleMessage(e) {
+				var token = e.data;
+				window.location.href = "./index?token=" + token;
+			}
+		}
+
+		function baiduLogin() {
+			window.location.href = $("#baiduLoginAddress").val();
+		}
 	</script>
 </body>
 </html>

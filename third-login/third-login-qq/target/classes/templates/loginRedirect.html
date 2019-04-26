@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script type="text/javascript"
+	th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>
+<link
+	th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/css/default.css}" rel="stylesheet" />
+<link rel="icon" th:href="@{/images/favicon.ico}" type="image/x-icon" />
+<meta charset="UTF-8" />
+<title>QQ redirect登录</title>
+</head>
+
+<body>
+	<div class="contentDiv">
+		<form action="doRedirectLogin" method="post"
+			class="form-horizontal">
+			<legend>
+				<strong>QQ redirect登录</strong>
+			</legend>
+			<input type="hidden" th:value="${redirect}" name="redirect" />
+			<div class="form-group">
+				<label for="book_name" class="col-sm-2 control-label">QQ:</label>
+				<div class="col-xs-4">
+					<input type="text" class="form-control" id="username"
+						name="username" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="book_writer" class="col-sm-2 control-label">PWD:</label>
+				<div class="col-xs-4">
+					<input type="password" class="form-control" id="password"
+						name="password" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<input class="btn btn-primary" type="submit" value="登录" />
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

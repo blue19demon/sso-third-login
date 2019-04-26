@@ -41,6 +41,7 @@ public class CookieUtils {
 	public static String setCookie(HttpServletRequest req, HttpServletResponse resp) {
 		String uuid = UUID.randomUUID().toString();
 		Cookie cookie = new Cookie(COOKIE_KEY, uuid);
+		cookie.setDomain("auth.com");
 		resp.addCookie(cookie);
 		return uuid;
 	}

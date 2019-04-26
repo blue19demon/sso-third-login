@@ -30,6 +30,7 @@ public class R {
 	}
 	
 	public static R error(String msg) {
+		r=new R();
 		r.setCode(500);
 		r.setMsg(msg);
 		return r;

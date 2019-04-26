@@ -17,6 +17,8 @@
 		<legend>
 			<strong>欢迎使用Baidu登录</strong>
 		</legend>
+		<input type="hidden" th:value="${yunMineAddress}" id="yunMineAddress" />
+		<input type="hidden" th:value="${qqAuthAddress}" id="qqAuthAddress" />
 		<div class="form-group">
 			<label for="book_name" class="col-sm-2 control-label">账号:</label>
 			<div class="col-xs-4">
@@ -36,34 +38,37 @@
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<input class="btn btn-primary" type="button" value="登录" />
-				&nbsp;&nbsp; <input class="btn" type="button" value="QQ登录"
-					onclick="qqLogin()" />
-					&nbsp;&nbsp; <input class="btn" type="button" value="我的百度云个人中心"
+				&nbsp;&nbsp; <input class="btn" type="button" value="QQ弹窗登录"
+					onclick="qqLogin()" /> &nbsp;&nbsp; <input class="btn"
+					type="button" value="QQ重定向登录" onclick="qqRedirectLogin()" />
+				&nbsp;&nbsp; <input class="btn" type="button" value="我的百度云个人中心"
 					onclick="yun_mine()" />
 			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
-	   
 		function qqLogin() {
-			window.open("http://127。0.0.1/login", window,
+			window.open($("#qqAuthAddress").val(), window,
 					"top=200,left=400,width=800,height=300");
 		}
-		 window.onload = function() {
-			 if(window.addEventListener){
-				 window.addEventListener('message',handleMessage,false);
-			 }else{
-				 window.attachEvent("onmessage",handleMessage);
-			 }
-			 function handleMessage(e) {
-				    var token=e.data;
-				    window.location.href="./index?token="+token;
-			  }
-		 }
-		 
-		 function yun_mine(){
-			 window.location.href="http://127。0.0.1:91/mine";
-		 }
+		function qqRedirectLogin() {
+			window.location.href = './qqRedirectLogin';
+		}
+		window.onload = function() {
+			if (window.addEventListener) {
+				window.addEventListener('message', handleMessage, false);
+			} else {
+				window.attachEvent("onmessage", handleMessage);
+			}
+			function handleMessage(e) {
+				var token = e.data;
+				window.location.href = "./index?token=" + token;
+			}
+		}
+
+		function yun_mine() {
+			window.location.href = $("#yunMineAddress").val();
+		}
 	</script>
 </body>
 </html>
